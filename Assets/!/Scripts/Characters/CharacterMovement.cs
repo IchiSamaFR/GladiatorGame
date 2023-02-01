@@ -6,9 +6,9 @@ namespace Gladiator.Character
 {
     public abstract class CharacterMovement : MonoBehaviour
     {
-        public void MoveDirection()
+        public void MoveDirection(Vector3 direction, float speed)
         {
-
+            transform.position += direction * speed * Time.fixedDeltaTime;
         }
     }
 }
