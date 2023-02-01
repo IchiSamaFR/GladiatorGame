@@ -16,10 +16,13 @@ namespace Gladiator.Character
         [SerializeField] internal int baseAttackSpeed;
         [Header("Move speed")]
         [SerializeField] internal int baseMoveSpeed;
+        [Header("Dash")]
+        [SerializeField] internal float baseDashRange;
         [Header("Attack")]
         [SerializeField] internal int baseAttack;
         [Header("Armor")]
         [SerializeField] internal int baseArmor;
+        public bool isInvincible;
 
         public int Health
         {
@@ -63,6 +66,13 @@ namespace Gladiator.Character
                 return baseMoveSpeed;
             }
         }
+        public virtual float DashRange 
+        {
+            get
+            {
+                return baseDashRange;
+            }
+        }
         public virtual int Attack
         {
             get
@@ -76,6 +86,10 @@ namespace Gladiator.Character
             {
                 return baseArmor;
             }
+        }
+
+        public bool CanConsumeStamina(int amount) {
+            return Stamina >= amount;
         }
     }
 
