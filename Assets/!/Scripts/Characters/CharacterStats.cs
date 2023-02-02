@@ -128,7 +128,11 @@ namespace Gladiator.Character
             return Stamina >= amount;
         }
 
-
+        public bool isAlive()
+        {
+            return baseHealth > 0;
+        }
+        
         public void GetHeal(int amount)
         {
             baseHealth += amount;

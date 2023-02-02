@@ -9,6 +9,8 @@ namespace Gladiator.Character
     {
         [SerializeField] private Transform model;
         private CharacterMovement characterMovement;
+        private CharacterController characterController;
+        private CharacterStats characterStats;
 
         public Transform Model
         {
@@ -31,6 +33,37 @@ namespace Gladiator.Character
                 }
                 return characterMovement;
             }
+        }
+
+        public CharacterController CharacterController
+        {
+            get
+            {
+                if (!characterController)
+                {
+                    characterController = GetComponent<CharacterController>();
+                }
+                return characterController;
+            }
+        }
+
+        public CharacterStats CharacterStats
+        {
+            get
+            {
+                if (!characterStats)
+                {
+                    characterStats = GetComponent<CharacterStats>();
+                }
+                return characterStats;
+            }
+        }
+
+        public void Init()
+        {
+            characterMovement = GetComponent<CharacterMovement>();
+            characterController = GetComponent<CharacterController>();
+            characterStats = GetComponent<CharacterStats>();
         }
     }
 }
