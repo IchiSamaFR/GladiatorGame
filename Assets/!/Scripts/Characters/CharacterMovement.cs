@@ -14,7 +14,7 @@ namespace Gladiator.Character
             transform.position += direction * speed * Time.fixedDeltaTime;
         }
 
-        public void Dash(Vector3 direction, float dashRange, float dashTime, Action onEnd=null) 
+        public void Dash(Vector3 direction, float dashRange, float dashTime, Action onEnd = null)
         {
             Tween = transform.DOMove(transform.position + direction * dashRange, dashTime).SetEase(Ease.OutExpo).OnComplete(() => onEnd?.Invoke());
         }
