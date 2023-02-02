@@ -53,8 +53,8 @@ namespace Gladiator.Character.Player
 
             if(Input.GetKey(KeyCode.Space)) 
             {
-                Player.PlayerStats.isDashing = true;
-                Dash(direction,Player.PlayerStats.DashRange, 0.1f, () => Player.PlayerStats.isDashing = false);
+                Player.PlayerStats.IsDashing = true;
+                Dash(direction,Player.PlayerStats.DashRange, 0.1f, () => Player.PlayerStats.IsDashing = false);
             }
             MoveDirection(direction, Player.PlayerStats.MoveSpeed);
         }
