@@ -22,7 +22,9 @@ namespace Gladiator.Character
         [SerializeField] internal int baseAttack;
         [Header("Armor")]
         [SerializeField] internal int baseArmor;
-        public bool isInvincible;
+        internal bool isInvincible;
+        internal bool isDashing;
+        internal bool canMove = true;
 
         public int Health
         {
@@ -87,9 +89,69 @@ namespace Gladiator.Character
                 return baseArmor;
             }
         }
+        public virtual bool IsInvincible
+        {
+            get
+            {
+                return isInvincible || isDashing;
+            }
+            set
+            {
+                isInvincible = value;
+            }
+        }
+        public virtual bool IsDashing
+        {
+            get
+            {
+                return isDashing;
+            }
+            set
+            {
+                isDashing = value;
+            }
+        }
+        public virtual bool CanMove
+        {
+            get
+            {
+                return canMove && !isDashing;
+            }
+            set
+            {
+                canMove = value;
+            }
+        }
 
-        public bool CanConsumeStamina(int amount) {
+        public bool CanConsumeStamina(int amount)
+        {
             return Stamina >= amount;
+        }
+
+
+        public void GetHeal(int amount)
+        {
+            baseHealth += amount;
+        }
+        public void GetStamina(int amount)
+        {
+            baseStamina += amount;
+        }
+        public void GetDamage(int amount)
+        {
+            baseHealth -= amount;
+            if(baseHealth < 0)
+            {
+                baseHealth = 0;
+            }
+        }
+        public void UseStamina(int amount)
+        {
+            if (!CanConsumeStamina(amount))
+            {
+                Debug.LogWarning("[UseStamina()] Need to verify CanConsumeStamina() before UseStamina.");
+            }
+            baseStamina -= amount;
         }
     }
 

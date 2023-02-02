@@ -290,7 +290,7 @@ GameObject:
   - component: {fileID: 469247911}
   - component: {fileID: 469247910}
   m_Layer: 0
-  m_Name: d7ohce8-5ba0e4a8-e17f-4b9e-b4af-39d249daa089
+  m_Name: background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

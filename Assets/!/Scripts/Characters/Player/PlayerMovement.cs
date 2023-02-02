@@ -28,6 +28,10 @@ namespace Gladiator.Character.Player
 
         public void Movement()
         {
+            if (!Player.PlayerStats.CanMove)
+            {
+                return;
+            }
             Vector3 direction = Vector3.zero;
 
             if (Input.GetKey(KeyCode.Z))
@@ -49,8 +53,8 @@ namespace Gladiator.Character.Player
 
             if(Input.GetKey(KeyCode.Space)) 
             {
-                Player.PlayerStats.isInvincible = true;
-                Dash(direction,Player.PlayerStats.DashRange, 0.1f, () => Player.PlayerStats.isInvincible = false);
+                Player.PlayerStats.isDashing = true;
+                Dash(direction,Player.PlayerStats.DashRange, 0.1f, () => Player.PlayerStats.isDashing = false);
             }
             MoveDirection(direction, Player.PlayerStats.MoveSpeed);
         }
