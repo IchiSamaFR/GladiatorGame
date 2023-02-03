@@ -5,8 +5,9 @@ using UnityEngine;
 namespace Gladiator.Character.Player
 {
     [RequireComponent(typeof(PlayerMovement))]
+    [RequireComponent(typeof(PlayerController))]
     [RequireComponent(typeof(PlayerStats))]
-    public class Player : MonoBehaviour
+    public class Player : Character
     {
         private PlayerMovement playerMovement;
         private PlayerStats playerStats;
