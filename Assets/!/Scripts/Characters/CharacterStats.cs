@@ -124,7 +124,7 @@ namespace Gladiator.Character
             }
         }
         public UnityEvent OnDeath;
-        public UnityEvent OnStatsChange;
+        public UnityEvent OnStatsChanged;
 
         public bool CanConsumeStamina(int amount)
         {
@@ -139,12 +139,12 @@ namespace Gladiator.Character
         public void GetHeal(int amount)
         {
             baseHealth += amount;
-            OnStatsChange.Invoke();
+            OnStatsChanged.Invoke();
         }
         public void GetStamina(int amount)
         {
             baseStamina += amount;
-            OnStatsChange.Invoke();
+            OnStatsChanged.Invoke();
         }
         public void GetDamage(int amount)
         {
@@ -157,7 +157,7 @@ namespace Gladiator.Character
             {
                 OnDeath.Invoke();
             }
-            OnStatsChange.Invoke();
+            OnStatsChanged.Invoke();
         }
         public void UseStamina(int amount)
         {
@@ -166,7 +166,7 @@ namespace Gladiator.Character
                 Debug.LogWarning("[UseStamina()] Need to verify CanConsumeStamina() before UseStamina.");
             }
             baseStamina -= amount;
-            OnStatsChange.Invoke();
+            OnStatsChanged.Invoke();
         }
     }
 
