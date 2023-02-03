@@ -29,15 +29,18 @@ namespace Gladiator.Character
         public void GetEnemiesInRange()
         {
             float forward = transform.rotation.eulerAngles.z;
-            forward = (forward < 0) ? forward + 360 : forward;
+            forward = (forward < -180) ? forward + 360 : forward;
             Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, CircleCollider.radius);
             foreach (Collider2D enemy in enemies)
             {
                 if (enemy.gameObject.GetComponent<Enemy.Enemy>())
                 {
                     float enemyAngle = Geometry.AngleBetweenVector2(transform.position, enemy.transform.position);
-                    enemyAngle = (enemyAngle < 0) ? enemyAngle + 360 : enemyAngle;
-                    print(enemyAngle);
+                    enemyAngle = (enemyAngle < -180) ? enemyAngle + 360 : enemyAngle;
+                    if(forward - enemyAngle < 45 || forward - enemyAngle > 360 - 45)
+                    {
+                        print(true);
+                    }
                 }
             }
 
