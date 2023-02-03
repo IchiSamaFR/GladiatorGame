@@ -7,24 +7,24 @@ namespace Gladiator.Character
     public abstract class CharacterStats : MonoBehaviour
     {
         [Header("Health")]
-        [SerializeField] internal int baseHealth;
-        [SerializeField] internal int baseMaxHealth;
+        [SerializeField] private int baseHealth;
+        [SerializeField] private int baseMaxHealth;
         [Header("Stamina")]
-        [SerializeField] internal int baseStamina;
-        [SerializeField] internal int baseMaxStamina;
+        [SerializeField] private int baseStamina;
+        [SerializeField] private int baseMaxStamina;
         [Header("Attack speed")]
-        [SerializeField] internal int baseAttackSpeed;
+        [SerializeField] private int baseAttackSpeed;
         [Header("Move speed")]
-        [SerializeField] internal int baseMoveSpeed;
+        [SerializeField] private int baseMoveSpeed;
         [Header("Dash")]
-        [SerializeField] internal float baseDashRange;
+        [SerializeField] private float baseDashRange;
         [Header("Attack")]
-        [SerializeField] internal int baseAttack;
+        [SerializeField] private int baseAttack;
         [Header("Armor")]
-        [SerializeField] internal int baseArmor;
-        internal bool isInvincible;
-        internal bool isDashing;
-        internal bool canMove = true;
+        [SerializeField] private int baseArmor;
+        private bool isInvincible;
+        private bool isDashing;
+        private bool canMove = true;
 
         public int Health
         {

@@ -8,7 +8,7 @@ namespace Gladiator.Character
 {
     public abstract class CharacterMovement : MonoBehaviour
     {
-        internal Tween Tween;
+        protected Tween Tween;
         public void MoveDirection(Vector3 direction, float speed)
         {
             transform.position += direction * speed * Time.fixedDeltaTime;

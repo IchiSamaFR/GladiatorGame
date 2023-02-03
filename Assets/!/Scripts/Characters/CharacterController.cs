@@ -5,8 +5,7 @@ namespace Gladiator.Character
 {
     public class CharacterController : MonoBehaviour
     {
-
-        internal bool canAttack;
+        private bool canAttack;
 
         public void Attack(Character cible)
         {
