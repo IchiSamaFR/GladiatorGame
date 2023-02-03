@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Gladiator.Character
 {
@@ -122,6 +123,8 @@ namespace Gladiator.Character
                 canMove = value;
             }
         }
+        public UnityEvent OnDeath;
+        public UnityEvent OnStatsChange;
 
         public bool CanConsumeStamina(int amount)
         {
@@ -136,10 +139,12 @@ namespace Gladiator.Character
         public void GetHeal(int amount)
         {
             baseHealth += amount;
+            OnStatsChange.Invoke();
         }
         public void GetStamina(int amount)
         {
             baseStamina += amount;
+            OnStatsChange.Invoke();
         }
         public void GetDamage(int amount)
         {
@@ -148,6 +153,11 @@ namespace Gladiator.Character
             {
                 baseHealth = 0;
             }
+            if(baseHealth == 0)
+            {
+                OnDeath.Invoke();
+            }
+            OnStatsChange.Invoke();
         }
         public void UseStamina(int amount)
         {
@@ -156,6 +166,7 @@ namespace Gladiator.Character
                 Debug.LogWarning("[UseStamina()] Need to verify CanConsumeStamina() before UseStamina.");
             }
             baseStamina -= amount;
+            OnStatsChange.Invoke();
         }
     }
 

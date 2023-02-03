@@ -8,7 +8,6 @@ namespace Gladiator.Character.Player
     {
         private void FixedUpdate()
         {
-            Attack();
             LookCursor();
         }
 
@@ -26,14 +25,6 @@ namespace Gladiator.Character.Player
 
             float angle = Vector2.SignedAngle(Vector2.right, forward);
             transform.eulerAngles = new Vector3(0, 0, angle);
-        }
-
-        public void Attack()
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-
-            }
         }
     }
 }

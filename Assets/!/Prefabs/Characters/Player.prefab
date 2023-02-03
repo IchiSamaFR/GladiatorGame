@@ -272,6 +272,9 @@ MonoBehaviour:
   baseDashRange: 0
   baseAttack: 4
   baseArmor: 0
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2977113806869798163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,7 +347,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 10
+  m_Radius: 2.5
 --- !u!114 &4473431233685159854
 MonoBehaviour:
   m_ObjectHideFlags: 0

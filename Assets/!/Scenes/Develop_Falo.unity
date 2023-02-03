@@ -489,6 +489,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1683436232842350468, guid: 1c780924e93001146b06ee5568e19f43, type: 3}
+      propertyPath: baseArmor
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683436232842350468, guid: 1c780924e93001146b06ee5568e19f43, type: 3}
+      propertyPath: baseAttack
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683436232842350468, guid: 1c780924e93001146b06ee5568e19f43, type: 3}
+      propertyPath: baseHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683436232842350468, guid: 1c780924e93001146b06ee5568e19f43, type: 3}
+      propertyPath: baseStamina
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683436232842350468, guid: 1c780924e93001146b06ee5568e19f43, type: 3}
+      propertyPath: baseDashRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683436232842350468, guid: 1c780924e93001146b06ee5568e19f43, type: 3}
+      propertyPath: baseMaxHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683436232842350468, guid: 1c780924e93001146b06ee5568e19f43, type: 3}
+      propertyPath: baseMoveSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683436232842350468, guid: 1c780924e93001146b06ee5568e19f43, type: 3}
+      propertyPath: baseMaxStamina
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683436232842350468, guid: 1c780924e93001146b06ee5568e19f43, type: 3}
+      propertyPath: baseAttackSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6661469320751982595, guid: 1c780924e93001146b06ee5568e19f43, type: 3}
       propertyPath: m_RootOrder
       value: 2

@@ -12,6 +12,7 @@ namespace Gladiator.Item
         [Header("Weapon")]
         public int Attack = 1;
         public int Range = 1;
+        public int Angle = 40;
         public bool TwoHands;
 
         public override ItemData Clone()
@@ -22,6 +23,7 @@ namespace Gladiator.Item
             item.SpriteUI = SpriteUI;
             item.Attack = Attack;
             item.Range = Range;
+            item.Angle = Angle;
             item.TwoHands = TwoHands;
             return item;
         }

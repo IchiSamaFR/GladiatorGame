@@ -8,6 +8,7 @@ namespace Gladiator.Character.Enemy
     {
         private Enemy enemy;
 
+
         public Enemy Enemy
         {
             get
@@ -18,6 +19,11 @@ namespace Gladiator.Character.Enemy
                 }
                 return enemy;
             }
+        }
+
+        private void Start()
+        {
+            OnDeath.AddListener(() => Destroy(gameObject));
         }
     }
 }
