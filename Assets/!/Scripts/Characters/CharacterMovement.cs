@@ -16,6 +16,11 @@ namespace Gladiator.Character
 
         public void Dash(Vector3 direction, float dashRange, float dashTime, Action onEnd = null)
         {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, dashRange, LayerMask.GetMask("Wall"));
+            if (hit.collider != null)
+            {
+                dashRange = hit.distance - 0.5f;
+            }
             Tween = transform.DOMove(transform.position + direction * dashRange, dashTime).SetEase(Ease.OutExpo).OnComplete(() => onEnd?.Invoke());
         }
     }
