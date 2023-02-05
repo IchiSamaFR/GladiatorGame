@@ -21,7 +21,7 @@ namespace Gladiator.Character.Player
         }
 
 
-        private void FixedUpdate()
+        private void Update()
         {
             Movement();
         }
