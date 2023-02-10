@@ -28,16 +28,8 @@ namespace Gladiator.Character
             this.weapon = weapon;
         }
 
-        void Update()
-        {
-            if (!weapon)
-            {
-                return;
-            }
-            AttackEnemies();
-        }
 
-        public List<Character> GetEnemiesInRange(float angle)
+        public List<Character> GetEnemiesInRange(float angle, string tag)
         {
             List<Character> enemiesList = new List<Character>();
             float forward = transform.rotation.eulerAngles.z;
@@ -45,7 +37,7 @@ namespace Gladiator.Character
             Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, CircleCollider.radius);
             foreach (Collider2D enemy in enemies)
             {
-                if (enemy.gameObject.GetComponent<Enemy.Enemy>())
+                if (enemy.gameObject.GetComponent<CharacterStats>() && enemy.gameObject.CompareTag(tag) && enemy.gameObject != gameObject)
                 {
                     float enemyAngle = Geometry.AngleBetweenVector2(transform.position, enemy.transform.position);
                     enemyAngle = (enemyAngle < -180) ? enemyAngle + 360 : enemyAngle;
@@ -58,15 +50,14 @@ namespace Gladiator.Character
             return enemiesList;
         }
 
-        public void AttackEnemies()
+        public void AttackEnemies(string tag = "Enemy")
         {
-            if (Input.GetMouseButtonDown(0))
+
+            foreach (Character enemy in GetEnemiesInRange(weapon.Angle, tag))
             {
-                foreach (Character enemy in GetEnemiesInRange(weapon.Angle))
-                {
-                    enemy.CharacterStats.GetDamage(1);
-                }
+                enemy.CharacterStats.GetDamage(1);
             }
+
         }
     }
 }

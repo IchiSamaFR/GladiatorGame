@@ -20,15 +20,5 @@ namespace Gladiator.Character.Enemy
                 return enemy;
             }
         }
-
-        private void FixedUpdate()
-        {
-            Movement();
-        }
-
-        public void Movement()
-        {
-            //coucou je me déplace
-        }
     }
 }

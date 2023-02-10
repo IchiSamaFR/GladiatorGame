@@ -1,3 +1,4 @@
+using Gladiator.Item;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,9 @@ namespace Gladiator.Character.Player
     {
         private PlayerMovement playerMovement;
         private PlayerStats playerStats;
+        [SerializeField]
+        private AttackController attackController;
+        public WeaponData weapon;
 
         public PlayerMovement PlayerMovement
         {
@@ -33,6 +37,19 @@ namespace Gladiator.Character.Player
                 }
                 return playerStats;
             }
+        }
+
+        public AttackController AttackController
+        {
+            get
+            {
+                return attackController;
+            }
+        }
+
+        private void Start()
+        {
+            AttackController.EquipWeapon(weapon);
         }
     }
 }

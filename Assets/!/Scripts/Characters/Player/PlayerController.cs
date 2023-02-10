@@ -6,9 +6,31 @@ namespace Gladiator.Character.Player
 {
     public class PlayerController : CharacterController
     {
+        private Player player;
+
+        public Player Player
+        {
+            get
+            {
+                if (!player)
+                {
+                    player = GetComponent<Player>();
+                }
+                return player;
+            }
+        }
+        
         private void FixedUpdate()
         {
             LookCursor();
+        }
+
+        private void Update()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Player.AttackController.AttackEnemies();
+            }
         }
 
         public void LookCursor()

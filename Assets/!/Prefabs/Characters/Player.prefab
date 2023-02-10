@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 2977113806691651693}
+  attackController: {fileID: 4473431233685159854}
 --- !u!114 &2977113806869798162
 MonoBehaviour:
   m_ObjectHideFlags: 0
