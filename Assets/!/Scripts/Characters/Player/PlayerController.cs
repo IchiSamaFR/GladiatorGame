@@ -19,18 +19,23 @@ namespace Gladiator.Character.Player
                 return player;
             }
         }
-        
-        private void FixedUpdate()
+
+        private Vector2 direction
         {
-            LookCursor();
+            get
+            {
+                return new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+            }
         }
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Player.AttackController.AttackEnemies();
-            }
+            CheckAttack();
+        }
+
+        private void FixedUpdate()
+        {
+            LookCursor();
         }
 
         public void LookCursor()
@@ -47,6 +52,35 @@ namespace Gladiator.Character.Player
 
             float angle = Vector2.SignedAngle(Vector2.right, forward);
             transform.eulerAngles = new Vector3(0, 0, angle);
+        }
+
+        public void CheckAttack()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Player.AttackController.AttackEnemies();
+            }
+        }
+        public void Move()
+        {
+            if(direction != Vector2.zero)
+            {
+                Player.PlayerMovement.Move(direction);
+            }
+        }
+        public void Run()
+        {
+            if (direction != Vector2.zero)
+            {
+                Player.PlayerMovement.Run(direction);
+            }
+        }
+        public void Dash()
+        {
+            if (direction != Vector2.zero && Input.GetKeyDown(""))
+            {
+                Player.PlayerMovement.Dash(direction);
+            }
         }
     }
 }

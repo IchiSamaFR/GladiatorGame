@@ -52,12 +52,10 @@ namespace Gladiator.Character
 
         public void AttackEnemies(string tag = "Enemy")
         {
-
             foreach (Character enemy in GetEnemiesInRange(weapon.Angle, tag))
             {
                 enemy.CharacterStats.GetDamage(1);
             }
-
         }
     }
 }

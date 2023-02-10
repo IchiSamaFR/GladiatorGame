@@ -128,6 +128,11 @@ namespace Gladiator.Character
         public UnityEvent OnDeath;
         public UnityEvent OnStatsChanged;
 
+        private void Update()
+        {
+            GetStamina(0.05f);
+        }
+
         public bool CanConsumeStamina(float amount)
         {
             return Stamina >= amount && canUseStamina;
@@ -182,13 +187,6 @@ namespace Gladiator.Character
             }
             baseStamina -= amount;
             OnStatsChanged.Invoke();
-        }
-
-        private IEnumerator InvincibleCoroutine(float duration)
-        {
-            IsInvincible = true;
-            yield return new WaitForSeconds(duration);
-            IsInvincible = false;
         }
 
         private IEnumerator WaitForCoroutine(Func<bool> func)
