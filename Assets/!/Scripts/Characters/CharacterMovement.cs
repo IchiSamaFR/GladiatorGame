@@ -11,7 +11,7 @@ namespace Gladiator.Character
         protected Tween Tween;
         public void MoveDirection(Vector3 direction, float speed)
         {
-            transform.position += direction * speed * Time.fixedDeltaTime;
+            transform.position += direction * speed * Time.deltaTime;
         }
 
         public void Dash(Vector3 direction, float dashRange, float dashTime, Action onEnd = null)
