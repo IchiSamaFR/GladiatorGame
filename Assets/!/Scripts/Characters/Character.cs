@@ -11,6 +11,8 @@ namespace Gladiator.Character
         private CharacterMovement characterMovement;
         private CharacterController characterController;
         private CharacterStats characterStats;
+        [SerializeField]
+        private AttackController attackController;
 
         public Transform Model
         {
@@ -56,6 +58,14 @@ namespace Gladiator.Character
                     characterStats = GetComponent<CharacterStats>();
                 }
                 return characterStats;
+            }
+        }
+
+        public AttackController AttackController
+        {
+            get
+            {
+                return attackController;
             }
         }
 

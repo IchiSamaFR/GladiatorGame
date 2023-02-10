@@ -12,8 +12,6 @@ namespace Gladiator.Character.Player
     {
         private PlayerMovement playerMovement;
         private PlayerStats playerStats;
-        [SerializeField]
-        private AttackController attackController;
         public WeaponData weapon;
 
         public PlayerMovement PlayerMovement
@@ -39,13 +37,7 @@ namespace Gladiator.Character.Player
             }
         }
 
-        public AttackController AttackController
-        {
-            get
-            {
-                return attackController;
-            }
-        }
+     
 
         private void Start()
         {

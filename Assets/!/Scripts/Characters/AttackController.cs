@@ -1,8 +1,8 @@
-﻿using Gladiator.Character.Enemy;
-using UnityEngine;
+﻿using UnityEngine;
 using Gladiator.Tools;
 using System.Collections.Generic;
 using Gladiator.Item;
+using System;
 
 namespace Gladiator.Character
 {
@@ -11,7 +11,8 @@ namespace Gladiator.Character
     {
         private CircleCollider2D circleCollider;
         private WeaponData weapon;
-
+        public Action<CharacterStats> OnCharacterEnter;
+        
         public CircleCollider2D CircleCollider
         {
             get
@@ -27,7 +28,15 @@ namespace Gladiator.Character
         {
             this.weapon = weapon;
         }
-
+        
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            var character = collision.gameObject.GetComponent<CharacterStats>();
+            if (character)
+            {
+                OnCharacterEnter?.Invoke(character);
+            }
+        }
 
         public List<Character> GetEnemiesInRange(float angle, string tag)
         {
@@ -57,5 +66,7 @@ namespace Gladiator.Character
                 enemy.CharacterStats.GetDamage(1);
             }
         }
+
+
     }
 }

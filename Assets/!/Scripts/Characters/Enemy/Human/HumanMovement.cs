@@ -1,4 +1,4 @@
-﻿namespace Gladiator.Character.Enemy.Human
+﻿namespace Gladiator.Character.Enemy
 {
     public class HumanMovement : EnemyMovement
     {
@@ -14,6 +14,19 @@
                     human = GetComponent<Human>();
                 }
                 return human;
+            }
+        }
+        
+        public void Start()
+        {
+            Human.AttackController.OnCharacterEnter += DetectPlayer;
+        }
+
+        public void DetectPlayer(CharacterStats player)
+        {
+            if (player.gameObject.CompareTag("Player"))
+            {
+                Human.AttackController.AttackEnemies("Player");
             }
         }
 

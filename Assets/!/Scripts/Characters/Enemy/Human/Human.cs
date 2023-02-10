@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Gladiator.Item;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Gladiator.Character.Enemy.Human
+namespace Gladiator.Character.Enemy
 {
     [RequireComponent(typeof(HumanMovement))]
     [RequireComponent(typeof(HumanStats))]
@@ -13,6 +14,7 @@ namespace Gladiator.Character.Enemy.Human
     {
         private HumanMovement humanMovement;
         private HumanStats humanStats;
+        public WeaponData weapon;
 
         public HumanMovement HumanMovement
         {
@@ -36,6 +38,11 @@ namespace Gladiator.Character.Enemy.Human
                 }
                 return humanStats;
             }
+        }
+        
+        private void Start()
+        {
+            AttackController.EquipWeapon(weapon);
         }
     }
 }

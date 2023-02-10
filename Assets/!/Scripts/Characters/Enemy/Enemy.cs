@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Gladiator.Item;
 using UnityEngine;
 namespace Gladiator.Character.Enemy
 {
