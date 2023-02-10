@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Gladiator.Character.Player
@@ -24,6 +22,12 @@ namespace Gladiator.Character.Player
         private void Update()
         {
             Movement();
+            RegenStamina();
+        }
+
+        public void RegenStamina()
+        {
+            Player.PlayerStats.GetStamina(0.05f);
         }
 
         public void Movement()
@@ -37,7 +41,11 @@ namespace Gladiator.Character.Player
 
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                speed = Player.PlayerStats.MoveSpeed * 2;
+                if (Player.PlayerStats.CanConsumeStamina(0.1f))
+                {
+                    Player.PlayerStats.UseStamina(0.1f);
+                    speed = Player.PlayerStats.MoveSpeed * 2;
+                }     
             }
 
             if (Input.GetKey(KeyCode.Z))
@@ -59,8 +67,12 @@ namespace Gladiator.Character.Player
 
             if(Input.GetKeyDown(KeyCode.Space)) 
             {
-                Player.PlayerStats.IsDashing = true;
-                Dash(direction,Player.PlayerStats.DashRange, 0.2f, () => Player.PlayerStats.IsDashing = false);
+                if (Player.PlayerStats.CanConsumeStamina(10))
+                {
+                    Player.PlayerStats.IsDashing = true;
+                    Dash(direction, Player.PlayerStats.DashRange, 0.2f, () => Player.PlayerStats.IsDashing = false);
+                    Player.PlayerStats.UseStamina(10);
+                }     
             }
             MoveDirection(direction, speed);
         }

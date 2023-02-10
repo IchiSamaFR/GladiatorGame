@@ -235,6 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 2977113806691651693}
   attackController: {fileID: 4473431233685159854}
+  weapon: {fileID: 0}
 --- !u!114 &2977113806869798162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,8 +250,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseHealth: 10
   baseMaxHealth: 10
-  baseStamina: 10
-  baseMaxStamina: 10
+  baseStamina: 100
+  baseMaxStamina: 100
   baseAttackSpeed: 1
   baseMoveSpeed: 4
   baseDashRange: 1.5

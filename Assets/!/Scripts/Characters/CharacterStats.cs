@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,8 +12,8 @@ namespace Gladiator.Character
         [SerializeField] private int baseHealth;
         [SerializeField] private int baseMaxHealth;
         [Header("Stamina")]
-        [SerializeField] private int baseStamina;
-        [SerializeField] private int baseMaxStamina;
+        [SerializeField] private float baseStamina;
+        [SerializeField] private float baseMaxStamina;
         [Header("Attack speed")]
         [SerializeField] private int baseAttackSpeed;
         [Header("Move speed")]
@@ -25,6 +26,7 @@ namespace Gladiator.Character
         [SerializeField] private int baseArmor;
         private bool isInvincible;
         private bool isDashing;
+        private bool canUseStamina = true;
         private bool canMove = true;
 
         public int Health
@@ -41,14 +43,14 @@ namespace Gladiator.Character
                 return baseMaxHealth;
             }
         }
-        public int Stamina
+        public float Stamina
         {
             get
             {
                 return baseStamina;
             }
         }
-        public virtual int MaxStamina
+        public virtual float MaxStamina
         {
             get
             {
@@ -69,7 +71,7 @@ namespace Gladiator.Character
                 return baseMoveSpeed;
             }
         }
-        public virtual float DashRange 
+        public virtual float DashRange
         {
             get
             {
@@ -126,47 +128,75 @@ namespace Gladiator.Character
         public UnityEvent OnDeath;
         public UnityEvent OnStatsChanged;
 
-        public bool CanConsumeStamina(int amount)
+        public bool CanConsumeStamina(float amount)
         {
-            return Stamina >= amount;
+            return Stamina >= amount && canUseStamina;
         }
 
         public bool isAlive()
         {
             return baseHealth > 0;
         }
-        
+
         public void GetHeal(int amount)
         {
             baseHealth += amount;
             OnStatsChanged.Invoke();
         }
-        public void GetStamina(int amount)
+        public void GetStamina(float amount)
         {
-            baseStamina += amount;
+            baseStamina = Mathf.Min(baseStamina + amount, MaxStamina);
             OnStatsChanged.Invoke();
         }
         public void GetDamage(int amount)
         {
             baseHealth -= amount;
-            if(baseHealth < 0)
+            if (baseHealth < 0)
             {
                 baseHealth = 0;
             }
-            if(baseHealth == 0)
+            if (baseHealth == 0)
             {
                 OnDeath.Invoke();
             }
             OnStatsChanged.Invoke();
         }
-        public void UseStamina(int amount)
+        public void UseStamina(float amount)
         {
             if (!CanConsumeStamina(amount))
             {
                 Debug.LogWarning("[UseStamina()] Need to verify CanConsumeStamina() before UseStamina.");
             }
+            if (baseStamina < 1)
+            {
+                canUseStamina = false;
+                StartCoroutine(WaitForCoroutine(() =>
+                {
+                    if (baseStamina > 20)
+                    {
+                        canUseStamina = true;
+                        return true;
+                    }
+                    return false;
+                }));
+            }
             baseStamina -= amount;
             OnStatsChanged.Invoke();
+        }
+
+        private IEnumerator InvincibleCoroutine(float duration)
+        {
+            IsInvincible = true;
+            yield return new WaitForSeconds(duration);
+            IsInvincible = false;
+        }
+
+        private IEnumerator WaitForCoroutine(Func<bool> func)
+        {
+            while (!func())
+            {
+                yield return new WaitForEndOfFrame();
+            }
         }
     }
 
