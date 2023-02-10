@@ -33,6 +33,12 @@ namespace Gladiator.Character.Player
                 return;
             }
             Vector3 direction = Vector3.zero;
+            float speed = Player.PlayerStats.MoveSpeed;
+
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                speed = Player.PlayerStats.MoveSpeed * 2;
+            }
 
             if (Input.GetKey(KeyCode.Z))
             {
@@ -56,7 +62,7 @@ namespace Gladiator.Character.Player
                 Player.PlayerStats.IsDashing = true;
                 Dash(direction,Player.PlayerStats.DashRange, 0.2f, () => Player.PlayerStats.IsDashing = false);
             }
-            MoveDirection(direction, Player.PlayerStats.MoveSpeed);
+            MoveDirection(direction, speed);
         }
     }
 }
