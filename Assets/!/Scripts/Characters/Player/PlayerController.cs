@@ -31,6 +31,9 @@ namespace Gladiator.Character.Player
         private void Update()
         {
             CheckAttack();
+            Move();
+            Run();
+            Dash();
         }
 
         private void FixedUpdate()
@@ -70,14 +73,14 @@ namespace Gladiator.Character.Player
         }
         public void Run()
         {
-            if (direction != Vector2.zero)
+            if (direction != Vector2.zero && Input.GetKey(KeyCode.LeftShift))
             {
                 Player.PlayerMovement.Run(direction);
             }
         }
         public void Dash()
         {
-            if (direction != Vector2.zero && Input.GetKeyDown(""))
+            if (direction != Vector2.zero && Input.GetKeyDown(KeyCode.Space))
             {
                 Player.PlayerMovement.Dash(direction);
             }

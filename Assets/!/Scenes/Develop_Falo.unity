@@ -130,10 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2977113806869798161, guid: 86d029d78db0ccb42acefb62dea2705d, type: 3}
-      propertyPath: weapon
-      value: 
-      objectReference: {fileID: 11400000, guid: 01a6478409b2a6449a24f714f09071e7, type: 2}
     - target: {fileID: 2977113806869798162, guid: 86d029d78db0ccb42acefb62dea2705d, type: 3}
       propertyPath: baseDashRange
       value: 1
